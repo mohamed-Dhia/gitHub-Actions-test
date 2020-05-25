@@ -1,2 +1,2 @@
-const toBeTested = () => false;
+const toBeTested = () => true;
 module.exports = toBeTested;
