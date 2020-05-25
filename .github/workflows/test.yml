@@ -11,4 +11,9 @@ jobs:
         with:
           node-version: 13
       - run: npm ci
-      - run: npm run testStats || jq .stats.passPercent mochawesome-report/mochawesome.json
+      - run: npm run testStats
+  grade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: jq .stats.passPercent mochawesome-report/mochawesome.json
