@@ -23,12 +23,8 @@ jobs:
           commands: |
             [
               { "command": "addWorksheet", "args": { "worksheetTitle": "testi" }},
-              { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }}
+              { "command": "updateData", "args": { "worksheetTitle": "test sheet", "data": [["A1", "A2", "A3"]] }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
-      - name: dump results
-        env:
-          RESULTS: ${{ steps.update_worksheet.outputs.results }}
-        run: echo "$RESULTS" | jq
