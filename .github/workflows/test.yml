@@ -12,3 +12,5 @@ jobs:
           node-version: 13
       - run: npm ci
       - run: npm test
+      - run: ls
+      - run: jq .stats.passPercent ../mochawesome-report/mochawesome-report.json
