@@ -1,16 +1,17 @@
 {
-  "name": "gitHub-Actions-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha exercice.test.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^7.2.0"
-  }
+	"name": "gitHub-Actions-test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha exercice.test.js --reporter mochawesome"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chai": "^4.2.0",
+		"mocha": "^7.2.0",
+		"mochawesome": "^6.1.1"
+	}
 }
