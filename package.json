@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "mocha exercice.test.js ",
-		"testStats": "mocha exercice.test.js --reporter mochawesome --reporter-options html=fasle"
+		"testStats": "mocha exercice.test.js--reporter mochawesome"
 	},
 	"keywords": [],
 	"author": "",
