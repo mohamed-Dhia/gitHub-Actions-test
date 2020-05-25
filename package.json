@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "mocha exercice.test.js"
+		"test": "mocha exercice.test.js --reporter mochawesome --reporter-options html=flase json=true"
 	},
 	"keywords": [],
 	"author": "",
