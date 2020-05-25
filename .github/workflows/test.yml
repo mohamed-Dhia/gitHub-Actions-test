@@ -23,7 +23,12 @@ jobs:
           commands: |
             [
               { "command": "addWorksheet", "args": { "worksheetTitle": "testi" }},
-              { "command": "updateData", "args": { "worksheetTitle": "testi" valueInputOption="hi", "data": [["A1", "A2", "A3"]] }}
+              { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }},
+              { "command": "appendData", "args": { "data": [["B1", "B2", "B3"]], "minCol": 1 }},
+              { "command": "appendData", "args": { "data": [["C2", "C3", "C4"]], "minCol": 2 }},
+              { "command": "getData", "args": { "minCol": 1 } },
+              { "command": "getData", "args": { "range": "testi!A2:B3" } },
+              { "command": "removeWorksheet", "args": { "worksheetTitle": "testi" }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
