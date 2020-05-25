@@ -19,7 +19,7 @@ jobs:
       - id: "grading"
         uses: jroehl/gsheet.action@v1.0.0
         with:
-          spreadsheetId: 1fbyH1UrlX8ZWXDJQ41Z-3jMBL3zMSaZDti3KtB6k2zc
+          spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
           commands: |
             [
               { "command": "addWorksheet", "args": { "worksheetTitle": "testi" }},
