@@ -10,6 +10,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 13
-      - run: echo ${{ github.actor }}
+      - run: echo ${{ github }}
       - run: npm ci
       - run: npm test
