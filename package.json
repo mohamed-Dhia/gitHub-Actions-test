@@ -4,7 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+<<<<<<< HEAD
 		"test": "mocha exercice.test.js --reporter mochawesome --reporter-options html=flase json=true"
+=======
+		"test": "mocha exercice.test.js"
+>>>>>>> 66b75e71f931116669e41b316163d53360d55499
 	},
 	"keywords": [],
 	"author": "",
