@@ -1,4 +1,4 @@
-name: testExercice
+name: testExercice2
 on:
   pull_request:
     branches: [master]
