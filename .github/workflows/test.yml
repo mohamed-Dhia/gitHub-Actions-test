@@ -16,13 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: test_pull_request
     steps:
-      - run: echo secrets.TEST_SPREADSHEET_ID
-      - run: echo ${{secrets.TEST_SPREADSHEET_ID}}
-      - run: echo "${{secrets.TEST_SPREADSHEET_ID}}"
       - id: "grading"
         uses: jroehl/gsheet.action@v1.0.0
         with:
-          spreadsheetId: "${{ secrets.TEST_SPREADSHEET_ID }}"
+          spreadsheetId: ${{secrets.TEST_SPREADSHEET_ID}}
           commands: |
             [
               { "command": "addWorksheet", "args": { "worksheetTitle": "testi" }},
@@ -34,5 +31,5 @@ jobs:
               { "command": "removeWorksheet", "args": { "worksheetTitle": "testi" }}
             ]
         env:
-          GSHEET_CLIENT_EMAIL: "${{ secrets.GSHEET_CLIENT_EMAIL }}"
-          GSHEET_PRIVATE_KEY: "${{ secrets.GSHEET_PRIVATE_KEY }}"
+          GSHEET_CLIENT_EMAIL: ${{secrets.GSHEET_CLIENT_EMAIL}}
+          GSHEET_PRIVATE_KEY: ${{secrets.GSHEET_PRIVATE_KEY}}
