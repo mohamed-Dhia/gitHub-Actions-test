@@ -33,6 +33,3 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }} 
-      - run : echo "$TEST_SPREADSHEET_ID"
-      - run : echo "$GSHEET_CLIENT_EMAIL"
-      - run : echo "$GSHEET_PRIVATE_KEY"
