@@ -12,14 +12,6 @@ jobs:
           node-version: 13
       - run: npm ci
       - run: npm run testStats && jq .stats.passPercent mochawesome-report/mochawesome.json || npm run testStats || jq .stats.passPercent mochawesome-report/mochawesome.json
-  loger : 
-    runs-on: ubuntu-latest
-    steps: 
-      - id: "let's try" 
-      - uses: actions/checkout@v2
-      - with:  
-          spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
-      - run: echo "$spreadsheetId"
   gsheet:
     runs-on: ubuntu-latest
     needs: test_pull_request
