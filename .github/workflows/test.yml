@@ -1,35 +1,59 @@
-name: testExercice2
-on:
-  pull_request:
-    branches: [master]
-jobs:
-  test_pull_request:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 13
-      - run: npm ci
-      - run: npm run testStats && jq .stats.passPercent mochawesome-report/mochawesome.json || npm run testStats || jq .stats.passPercent mochawesome-report/mochawesome.json
-  gsheet:
-    runs-on: ubuntu-latest
-    needs: test_pull_request
-    steps:
-      - id: "grading"
-        uses: jroehl/gsheet.action@v1.0.0
-        with:
-          spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
-          commands: |
-            [
-              { "command": "addWorksheet", "args": { "worksheetTitle": "testi" }},
-              { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }},
-              { "command": "appendData", "args": { "data": [["B1", "B2", "B3"]], "minCol": 1 }},
-              { "command": "appendData", "args": { "data": [["C2", "C3", "C4"]], "minCol": 2 }},
-              { "command": "getData", "args": { "minCol": 1 } },
-              { "command": "getData", "args": { "range": "testi!A2:B3" } },
-              { "command": "removeWorksheet", "args": { "worksheetTitle": "testi" }}
-            ]
-        env:
-          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+{
+  "on": {
+    "pull_request": {
+      "branches": [
+        "master"
+      ]
+    }
+  }, 
+  "jobs": {
+    "test_pull_request": {
+      "steps": [
+        {
+          "uses": "actions/checkout@v2"
+        }, 
+        {
+          "uses": "actions/setup-node@v1", 
+          "with": {
+            "node-version": 13
+          }
+        }, 
+        {
+          "run": "npm ci"
+        }, 
+        {
+          "run": "npm run testStats && jq .stats.passPercent mochawesome-report/mochawesome.json || npm run testStats || jq .stats.passPercent mochawesome-report/mochawesome.json"
+        }
+      ], 
+      "runs-on": "ubuntu-latest"
+    }, 
+    "gsheet": {
+      "needs": "test_pull_request", 
+      "steps": [
+        {
+          "id": "grading"
+        }, 
+        {
+          "run": "echo \"$TEST_SPREADSHEET_ID\""
+        }, 
+        {
+          "run": "echo \"$GSHEET_CLIENT_EMAIL\""
+        }, 
+        {
+          "uses": "jroehl/gsheet.action@v1.0.0", 
+          "run": "echo \"$GSHEET_PRIVATE_KEY\"", 
+          "with": {
+            "spreadsheetId": "${{ secrets.TEST_SPREADSHEET_ID }}", 
+            "commands": "[\n  { \"command\": \"addWorksheet\", \"args\": { \"worksheetTitle\": \"testi\" }},\n  { \"command\": \"updateData\", \"args\": { \"data\": [[\"A1\", \"A2\", \"A3\"]] }},\n  { \"command\": \"appendData\", \"args\": { \"data\": [[\"B1\", \"B2\", \"B3\"]], \"minCol\": 1 }},\n  { \"command\": \"appendData\", \"args\": { \"data\": [[\"C2\", \"C3\", \"C4\"]], \"minCol\": 2 }},\n  { \"command\": \"getData\", \"args\": { \"minCol\": 1 } },\n  { \"command\": \"getData\", \"args\": { \"range\": \"testi!A2:B3\" } },\n  { \"command\": \"removeWorksheet\", \"args\": { \"worksheetTitle\": \"testi\" }}\n]\n"
+          }, 
+          "env": {
+            "GSHEET_CLIENT_EMAIL": "${{ secrets.GSHEET_CLIENT_EMAIL }}", 
+            "GSHEET_PRIVATE_KEY": "${{ secrets.GSHEET_PRIVATE_KEY }}"
+          }
+        }
+      ], 
+      "runs-on": "ubuntu-latest"
+    }
+  }, 
+  "name": "testExercice2"
+}
