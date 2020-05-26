@@ -17,6 +17,7 @@ jobs:
     needs: test_pull_request
     steps: 
       - id: "grading"
+      - uses: actions/checkout@v2
       - run : echo "$TEST_SPREADSHEET_ID"
       - run : echo "$GSHEET_CLIENT_EMAIL"
       - run : echo "$GSHEET_PRIVATE_KEY"
