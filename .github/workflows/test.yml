@@ -20,7 +20,7 @@ jobs:
       - run : echo "$TEST_SPREADSHEET_ID"
       - run : echo "$GSHEET_CLIENT_EMAIL"
       - run : echo "$GSHEET_PRIVATE_KEY"
-        uses: jroehl/gsheet.action@v1.0.0
+      - uses: jroehl/gsheet.action@v1.0.0
         with:
           spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
 
