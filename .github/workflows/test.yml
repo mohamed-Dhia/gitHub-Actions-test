@@ -35,7 +35,6 @@ jobs:
               { "command": "removeWorksheet", "args": { "worksheetTitle": "testi" }}
             ]
         env:
-<<<<<<< HEAD
           GSHEET_CLIENT_EMAIL: |
             -----BEGIN PRIVATE KEY-----
             AIzaSyCUoKdEm0_ZE0QOfSLjgURtS4aVpJM1d7U
@@ -46,7 +45,3 @@ jobs:
             1fbyH1UrlX8ZWXDJQ41Z-3jMBL3zMSaZDti3KtB6k2zc
             -----END PRIVATE KEY-----
             
-=======
-          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
->>>>>>> 14334815d883200be2a24181c8c72d89a6ccdf13
