@@ -26,7 +26,7 @@ jobs:
           commands: |
             [
               { "command": "getWorksheet", "args": { "worksheetTitle": "Sheet1" }},
-              { "command": "updateData", "args": { "data": [[],["","$GRADE"] }}
+              { "command": "updateData", "args": { "data": [[],["","$GRADE"]] }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
