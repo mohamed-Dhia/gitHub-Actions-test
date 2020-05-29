@@ -17,5 +17,6 @@
         "titleBar.border": "#fae968",
         "titleBar.inactiveBackground": "#fae96899",
         "titleBar.inactiveForeground": "#15202b99"
-    }
+    },
+    "deno.enable": false
 }
