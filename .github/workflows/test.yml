@@ -22,7 +22,7 @@ jobs:
           spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
           commands: |
             [
-              { "command": "getWorksheet", "args": { "worksheetTitle": "sheet1" }},
+              { "command": "getWorksheet", "args": { "worksheetTitle": "Sheet1" }},
               { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }}
             ]
         env:
