@@ -16,14 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: test_pull_request
     steps:
-      - id: "reading"
       - uses: actions/checkout@master
-        name: Set env
-        run: |
+      - run: |
           ls 
           echo ::set-env name=GRADE:: jq .stats.passPercent mochawesome-report/mochawesome.json
-      - id: "grading"
-        uses: jroehl/gsheet.action@v1.0.0
+      - uses: jroehl/gsheet.action@v1.0.0
         with:
           spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
           commands: |
