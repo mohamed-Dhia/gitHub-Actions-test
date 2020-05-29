@@ -17,9 +17,9 @@ jobs:
     needs: test_pull_request
     steps:
       - id: "reading"
-        uses: actions/checkout@master
+      - uses: actions/checkout@master
         name: Set env
-        run: |
+      - run: |
           ls 
           echo ::set-env name=GRADE:: jq .stats.passPercent mochawesome-report/mochawesome.json
       - id: "grading"
