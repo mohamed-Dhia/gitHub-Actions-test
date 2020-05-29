@@ -15,8 +15,11 @@ jobs:
   echoer:
     runs-on: ubuntu-16.04
     steps:
-      - uses: actions/checkout@v2
-      - run: echo "${{ secrets.TEST_SPREADSHEET_ID }}"
+      - shell: bash
+        env: 
+          TEST: ${{ secrets.TEST_SPREADSHEET_ID }}
+        run: |
+          echo "$TEST"
   gsheet:
     runs-on: ubuntu-latest
     needs: test_pull_request
