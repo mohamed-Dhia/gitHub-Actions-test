@@ -16,6 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: test_pull_request
     steps:
+      - id: "reading"
+        uses: actions/checkout@master
+        name: Set env
+        run: |
+          ls 
+          echo ::set-env name=GRADE:: jq .stats.passPercent mochawesome-report/mochawesome.json
       - id: "grading"
         uses: jroehl/gsheet.action@v1.0.0
         with:
@@ -23,8 +29,9 @@ jobs:
           commands: |
             [
               { "command": "getWorksheet", "args": { "worksheetTitle": "Sheet1" }},
-              { "command": "updateData", "args": { "data": [[],["B1","B2","B3"]] }}
+              { "command": "updateData", "args": { "data": [[],[,$GRADE] }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+          
