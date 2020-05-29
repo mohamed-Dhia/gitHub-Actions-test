@@ -19,7 +19,7 @@ jobs:
       - id: "grading"
         uses: jroehl/gsheet.action@v1.0.0
         with:
-          spreadsheetId: -----BEGIN PRIVATE KEY-----\ndhiaweslati16@gmail.com\n-----END PRIVATE KEY-----\n
+          spreadsheetId: ${{ secrets.TEST_SPREADSHEET_ID }}
           commands: |
             [
               { "command": "addWorksheet", "args": { "worksheetTitle": "testi" }},
@@ -31,5 +31,5 @@ jobs:
               { "command": "removeWorksheet", "args": { "worksheetTitle": "testi" }}
             ]
         env:
-          GSHEET_CLIENT_EMAIL: -----BEGIN PRIVATE KEY-----\nAIzaSyCUoKdEm0_ZE0QOfSLjgURtS4aVpJM1d7U\n-----END PRIVATE KEY-----\n
-          GSHEET_PRIVATE_KEY: -----BEGIN PRIVATE KEY-----\n1fbyH1UrlX8ZWXDJQ41Z-3jMBL3zMSaZDti3KtB6k2zc\n-----END PRIVATE KEY-----\n
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
